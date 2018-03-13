@@ -30,4 +30,13 @@ public class TestSearch {
         Assert.assertEquals(position, search.getPosition());
     }
 
+    @Test
+    public void isLastElement() {
+        int key = 55;
+        int position = 12;
+        int seq[] = {1, 5, 6, 9, 10, 15, 20, 25, 40, 55};
+        SearchResult search = BinarySearch.search(key, seq);
+        Assert.assertEquals(position, search.getPosition());
+    }
+
 }
