@@ -47,9 +47,11 @@ public class Tests {
     }
     @Test
     public void isLastInManyElementSequence(){
-        seq=new int[2];
+        seq=new int[4];
         seq[0]=4;
-        seq[1]=23;
+        seq[1]=5;
+        seq[2]=6;
+        seq[3]=23;
         result = BinarySearch.search(23, seq);
         Assert.assertEquals(seq.length,result.getPosition());
     }
@@ -67,10 +69,13 @@ public class Tests {
     }
     @Test
     public void isNotInManyElementSequence(){
-        seq=new int[3];
+        seq=new int[6];
         seq[0]=4;
         seq[1]=15;
         seq[2]=23;
+        seq[3]=24;
+        seq[4]=115;
+        seq[5]=223;
         result = BinarySearch.search(7, seq);
         Assert.assertEquals(false,result.isFound());
     }
