@@ -7,7 +7,13 @@ public class SearchResult {
 
 	private static final int NOT_FOUND = -1;
 	private int position = NOT_FOUND;
-
+	private int center;
+	void setCenter(int center){
+		this.center=center;
+	}
+	public int getCenter(){
+		return center;
+	}
 	public boolean isFound() {
 		return position > NOT_FOUND;
 	}

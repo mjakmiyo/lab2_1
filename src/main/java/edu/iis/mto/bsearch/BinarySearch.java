@@ -37,7 +37,7 @@ public class BinarySearch {
 				else
 					end = center - 1;
 			}
-
+			result.setCenter(center);
 		}
 		return result;
 	}

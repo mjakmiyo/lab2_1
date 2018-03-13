@@ -63,9 +63,12 @@ public class Tests {
         seq[2]=23;
         result = BinarySearch.search(15, seq);
         //Check if length of sequence is odd
+        Assert.assertEquals(15, result.getCenter());
         if(seq.length % 2 == 1){
             Assert.assertEquals(seq.length-seq.length/2,result.getPosition());
         }
+        Assert.assertTrue((seq.length-seq.length/2 == result.getPosition()| seq.length/2== result.getPosition()));
+        //seq.length/2
     }
     @Test
     public void isNotInManyElementSequence(){
