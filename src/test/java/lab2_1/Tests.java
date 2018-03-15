@@ -22,4 +22,9 @@ public class Tests {
 	public void ShouldBeFirst() {
 		assertEquals(1, BinarySearch.search(1, new int[] {1,3,2,1}).getPosition());
 	}
+	
+	@Test
+	public void ShouldBeLast() {
+		assertEquals(5 , BinarySearch.search(5, new int[] {4,1,2,3,5}).getPosition());
+	}
 }
