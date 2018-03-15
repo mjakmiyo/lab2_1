@@ -32,4 +32,9 @@ public class Tests {
 	public void ShouldBeInTheMiddle() {
 		assertEquals(2 , BinarySearch.search(2, new int[] {1,2,4}).getPosition());
 	}
+	
+	@Test
+	public void NotInSequence() {
+		assertEquals(false , BinarySearch.search(8, new int[] {1,2,4,11,12,15}).isFound());
+	}
 }
