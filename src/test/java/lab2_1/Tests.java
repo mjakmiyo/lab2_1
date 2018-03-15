@@ -27,4 +27,9 @@ public class Tests {
 	public void ShouldBeLast() {
 		assertEquals(5 , BinarySearch.search(5, new int[] {4,1,2,3,5}).getPosition());
 	}
+	
+	@Test
+	public void ShouldBeInTheMiddle() {
+		assertEquals(2 , BinarySearch.search(2, new int[] {1,2,4}).getPosition());
+	}
 }
