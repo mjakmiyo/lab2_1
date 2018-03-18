@@ -23,7 +23,7 @@ public class BinarySearch {
 		int start = 0;
 		int end = seq.length - 1;
 		int center;
-		if(end == -1) throw new IllegalArgumentException();
+		if (end == -1) throw new IllegalArgumentException();
 		SearchResult result = new SearchResult();
 
 		while (start <= end) {

@@ -1,6 +1,7 @@
 package edu.iis.mto.bsearch;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static edu.iis.mto.bsearch.BinarySearch.search;
@@ -13,8 +14,8 @@ public class BinarySearchTest {
     private static int size = (int) Math.ceil(Math.random() * 100 + 2);
     private static int[] seq;
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void setUp() {
         seq = new int[size];
         for(int i = size; i > 0; i--) {
             seq[i - 1] = i;
@@ -28,14 +29,14 @@ public class BinarySearchTest {
 
     @Test
     public void findElementInSeqWhenSeqLengthIsOne(){
-        seq = new int[1];
+        int[] seq = new int[1];
         seq[0] = 1;
         assertThat(search(1,seq).isFound(), is(true));
     }
 
     @Test
     public void notFindElementInSeqWhenSeqLengthIsOne(){
-        seq = new int[1];
+        int[] seq = new int[1];
         seq[0] = 1;
         assertThat(search(2, seq).isFound(), is(not(true)));
     }
@@ -57,6 +58,8 @@ public class BinarySearchTest {
 
     @Test
     public void findElementInSeqOnMiddlePositionWhenSeqLengthIsBiggerThanOne(){
-        assertThat(search(seq[(seq.length-1)/2], seq).getPosition(),is((seq.length+1)/2));
+        int key = seq[(seq.length-1)/2];
+        int middlePosition = (seq.length+1)/2;
+        assertThat(search(key, seq).getPosition(),is(middlePosition));
     }
 }
