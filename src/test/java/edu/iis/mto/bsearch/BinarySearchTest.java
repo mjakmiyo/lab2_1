@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static edu.iis.mto.bsearch.BinarySearch.search;
 import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 
 public class BinarySearchTest {
 
@@ -29,33 +30,33 @@ public class BinarySearchTest {
     public void findElementInSeqWhenSeqLengthIsOne(){
         seq = new int[1];
         seq[0] = 1;
-        assertTrue(search(1, seq).isFound());
+        assertThat(search(1,seq).isFound(), is(true));
     }
 
     @Test
     public void notFindElementInSeqWhenSeqLengthIsOne(){
         seq = new int[1];
         seq[0] = 1;
-        assertTrue(!search(2, seq).isFound());
+        assertThat(search(2, seq).isFound(), is(not(true)));
     }
 
     @Test
     public void notFindElementInSeqWhenSeqLengthIsBiggerThanOne(){
-        assertTrue(!search(250, seq).isFound());
+        assertThat(search(250, seq).isFound(), is(not(true)));
     }
 
     @Test
     public void findElementInSeqOnFirstPositionWhenSeqLengthIsBiggerThanOne(){
-        assertTrue(search(seq[0], seq).getPosition() == 1);
+        assertThat(search(seq[0], seq).getPosition(), is(1));
     }
 
     @Test
     public void findElementInSeqOnLastPositionWhenSeqLengthIsBiggerThanOne(){
-        assertTrue(search(seq[seq.length-1], seq).getPosition() == seq.length);
+        assertThat(search(seq[seq.length-1], seq).getPosition(), is(seq.length));
     }
 
     @Test
     public void findElementInSeqOnMiddlePositionWhenSeqLengthIsBiggerThanOne(){
-        assertTrue(search(seq[(seq.length-1)/2], seq).getPosition() == (seq.length+1)/2);
+        assertThat(search(seq[(seq.length-1)/2], seq).getPosition(),is((seq.length+1)/2));
     }
 }
