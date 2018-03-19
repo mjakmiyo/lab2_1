@@ -1,6 +1,7 @@
 package lab2_1;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 
 import org.junit.After;
 import org.junit.Before;
@@ -18,7 +19,7 @@ public class Tests {
 	public void testData() {
 		 this.oneElementArray = new int[] {5};
 		 this.biggerArrayOdd = new int[] {1,2,3,4,5};
-		 this.biggerArrayEven = new int[] {1,2,3,4,5,6};
+		 this.biggerArrayEven = new int[] {0,1,2,3,4,5};
 	}
 	
 	@After
@@ -45,16 +46,21 @@ public class Tests {
 	
 	@Test
 	public void ShouldBeLast() {		
-		assertEquals(5 , BinarySearch.search(5, biggerArrayOdd).getPosition());
+		assertEquals(biggerArrayOdd.length, BinarySearch.search(5, biggerArrayOdd).getPosition());
 	}
 	
 	@Test
-	public void ShouldBeInTheMiddle() {
-		assertEquals(3 , BinarySearch.search(3, biggerArrayOdd).getPosition());
+	public void ShouldBeInTheMiddleOddArray() {
+		assertThat(3, is(BinarySearch.search(3, biggerArrayOdd).getPosition()));
 	}
 	
 	@Test
-	public void NotInSequence() {
-		assertEquals(false , BinarySearch.search(8, biggerArrayOdd).isFound());
+	public void ShouldBeInTheMiddleEvenArray() {
+		assertThat(4, is(BinarySearch.search(3, biggerArrayEven).getPosition()));
+	}
+	
+	@Test
+	public void ShouldNotBeInSequence() {
+		assertFalse(BinarySearch.search(8, biggerArrayOdd).isFound());
 	}
 }
