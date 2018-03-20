@@ -62,4 +62,18 @@ public class BinarySearchTest {
         int middlePosition = (seq.length+1)/2;
         assertThat(search(key, seq).getPosition(),is(middlePosition));
     }
+
+    @Test
+    public void findElementInSeqOnMiddlePositionPlusOneWhenSeqLengthIsBiggerThanOne(){
+        int key = seq[(seq.length)/2];
+        int middlePosition = (seq.length+2)/2;
+        assertThat(search(key, seq).getPosition(),is(middlePosition));
+    }
+
+    @Test
+    public void findElementInSeqOnMiddlePositionMinusOneWhenSeqLengthIsBiggerThanOne(){
+        int key = seq[(seq.length-2)/2];
+        int middlePosition = (seq.length)/2;
+        assertThat(search(key, seq).getPosition(),is(middlePosition));
+    }
 }
