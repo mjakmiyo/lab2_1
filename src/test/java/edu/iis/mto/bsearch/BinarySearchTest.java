@@ -20,7 +20,7 @@ public class BinarySearchTest {
     public void keyIsInOneElementSequence() {
         int[] seq = {3};
         int key = 3;
-        assertThat( search( key, seq ).isFound() && search( key, seq ).getPosition() == 1, is(true) );
+        assertThat( search( key, seq ).getPosition(), is(1) );
     }
 
 
@@ -28,21 +28,21 @@ public class BinarySearchTest {
     public void keyIsNotInOneElementSequence() {
         int[] seq = {1};
         int key = 2;
-        assertThat( !search( key, seq ).isFound() && search( key, seq ).getPosition() == -1, is(true) );
+        assertThat( search( key, seq ).getPosition(), is(-1) );
     }
 
     @Test
     public void keyIsFirstElementInSequence() {
         int[] seq = {1, 2, 3, 5};
         int key = 1;
-        assertThat( search( key, seq ).isFound() && search( key, seq ).getPosition() == 1 , is(true));
+        assertThat( search( key, seq ).getPosition() , is(1));
     }
 
     @Test
     public void keyIsLastElementInSequence() {
         int[] seq = {1, 2, 4, 5, 6, 10, 13, 15};
         int key = 15;
-        assertThat( search( key, seq ).isFound() && search( key, seq ).getPosition() == seq.length, is(true));
+        assertThat( search( key, seq ).getPosition() ,is(seq.length));
     }
 
     @Test
@@ -56,6 +56,6 @@ public class BinarySearchTest {
     public void keyIsNotInSequence() {
         int[] seq = {1, 2, 4, 5, 6, 10, 13, 15, 16, 19};
         int key = 20;
-        assertThat( !search( key, seq ).isFound() && search( key, seq ).getPosition() == -1 , is(true));
+        assertThat( search( key, seq ).getPosition(),is(-1));
     }
 }
