@@ -59,4 +59,21 @@ public class TestSearch {
         Assert.assertThat(search.isFound(), is(not(true)));
     }
 
+    @Test
+    public void isLeftMiddleInEvenSequence() {
+        int key = 9;
+        int position = 4;
+        int seq[] = {1, 5, 6, 9, 10, 18, 31, 45};
+        SearchResult search = BinarySearch.search(key, seq);
+        Assert.assertThat(search.getPosition(), is(position));
+    }
+
+    @Test
+    public void isRightMiddleInEvenSequence() {
+        int key = 10;
+        int position = 5;
+        int seq[] = {1, 5, 6, 9, 10, 18, 31, 45};
+        SearchResult search = BinarySearch.search(key, seq);
+        Assert.assertThat(search.getPosition(), is(position));
+    }
 }
