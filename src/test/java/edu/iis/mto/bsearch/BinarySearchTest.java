@@ -4,61 +4,61 @@ import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
+import static edu.iis.mto.bsearch.BinarySearch.search;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class BinarySearchTest {
 
-    private BinarySearch binarySearch;
+//    private BinarySearch binarySearch;
 
 
     @Before
     public void setup() {
-        binarySearch = new BinarySearch();
 
     }
 
     @Test
-    public void oneElementIsInSequence() {
+    public void keyIsInOneElementSequence() {
         int[] seq = {1};
         int key = 1;
-        assertEquals(binarySearch.search(key, seq).isFound() == true && binarySearch.search(key, seq).getPosition() == key, seq[0] == 1);
+        assertEquals(search(key, seq).isFound() && search(key, seq).getPosition() == key, seq[0] == 1);
     }
 
 
     @Test
-    public void oneElementIsNotInSequence() {
+    public void keyIsNotInOneElementSequence() {
         int[] seq = {1};
         int key = 2;
-        assertTrue(binarySearch.search(key, seq).isFound() == false && binarySearch.search(key, seq).getPosition() == -1);
+        assertTrue(!search(key, seq).isFound() && search(key, seq).getPosition() == -1);
     }
 
     @Test
-    public void firstElementInSequence() {
+    public void keyIsFirstElementInSequence() {
         int[] seq = {1, 2, 3, 5};
         int key = 1;
-        assertTrue(binarySearch.search(key, seq).isFound() == true && binarySearch.search(key, seq).getPosition() == 1);
+        assertTrue(search(key, seq).isFound() && search(key, seq).getPosition() == 1);
     }
 
     @Test
-    public void lastElementInSequence() {
+    public void keyIsLastElementInSequence() {
         int[] seq = {1, 2, 4, 5, 6, 10, 13, 15};
         int key = 15;
-        assertTrue(binarySearch.search(key, seq).isFound() == true && binarySearch.search(key, seq).getPosition() == seq.length);
+        assertTrue(search(key, seq).isFound() && search(key, seq).getPosition() == seq.length);
     }
 
     @Test
-    public void middleElementInSequence() {
+    public void keyIsMiddleElementInSequence() {
         int[] seq = {1, 2, 4, 5, 10, 11, 13, 14, 15, 20, 22};
         int key = 11;
-        assertTrue(binarySearch.search(key, seq).isFound() == true && binarySearch.search(key, seq).getPosition() == 6);
+        assertTrue(search(key, seq).isFound() && search(key, seq).getPosition() == 6);
     }
 
     @Test
-    public void elementNotInSequence() {
+    public void keyIsNotInSequence() {
         int[] seq = {1, 2, 4, 5, 6, 10, 13, 15, 16, 19};
         int key = 20;
-        assertTrue(binarySearch.search(key, seq).isFound() == false && binarySearch.search(key, seq).getPosition() == -1);
+        assertTrue(!search(key, seq).isFound() && search(key, seq).getPosition() == -1);
     }
 }
