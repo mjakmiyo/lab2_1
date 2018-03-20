@@ -36,8 +36,8 @@ public class TestSearch {
     @Test
     public void isLastElement() {
         int key = 55;
-        int position = 10;
         int seq[] = {1, 5, 6, 9, 10, 15, 20, 25, 40, 55};
+        int position = seq.length;
         SearchResult search = BinarySearch.search(key, seq);
         Assert.assertThat(search.getPosition(), is(position));
     }
@@ -45,8 +45,8 @@ public class TestSearch {
     @Test
     public void isMiddleElement() {
         int key = 9;
-        int position = 4;
         int seq[] = {1, 5, 6, 9, 10, 18, 31};
+        int position = seq.length / 2 + 1;
         SearchResult search = BinarySearch.search(key, seq);
         Assert.assertThat(search.getPosition(), is(position));
     }
@@ -62,8 +62,8 @@ public class TestSearch {
     @Test
     public void isLeftMiddleInEvenSequence() {
         int key = 9;
-        int position = 4;
         int seq[] = {1, 5, 6, 9, 10, 18, 31, 45};
+        int position = seq.length / 2;
         SearchResult search = BinarySearch.search(key, seq);
         Assert.assertThat(search.getPosition(), is(position));
     }
@@ -71,8 +71,8 @@ public class TestSearch {
     @Test
     public void isRightMiddleInEvenSequence() {
         int key = 10;
-        int position = 5;
         int seq[] = {1, 5, 6, 9, 10, 18, 31, 45};
+        int position = seq.length / 2 + 1;
         SearchResult search = BinarySearch.search(key, seq);
         Assert.assertThat(search.getPosition(), is(position));
     }
