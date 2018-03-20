@@ -8,7 +8,6 @@ package edu.iis.mto.bsearch;
  * 
  */
 public class BinarySearch {
-
 	/**
 	 * Metoda realizujaca wyszukiwanie binarne
 	 * 
@@ -24,6 +23,7 @@ public class BinarySearch {
 		int start = 0;
 		int end = seq.length - 1;
 		int center;
+		if (end == -1) throw new IllegalArgumentException();
 		SearchResult result = new SearchResult();
 
 		while (start <= end) {
