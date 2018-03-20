@@ -5,14 +5,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static edu.iis.mto.bsearch.BinarySearch.search;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertTrue;
 
 public class BinarySearchTest {
-
-//    private BinarySearch binarySearch;
-
 
     @Before
     public void setup() {
