@@ -21,9 +21,9 @@ public class BinarySearchTest {
 
     @Test
     public void keyIsInOneElementSequence() {
-        int[] seq = {1};
-        int key = 1;
-        assertEquals(search(key, seq).isFound() && search(key, seq).getPosition() == key, seq[0] == 1);
+        int[] seq = {3};
+        int key = 3;
+        assertTrue(search(key, seq).isFound() && search(key, seq).getPosition() == 1);
     }
 
 
