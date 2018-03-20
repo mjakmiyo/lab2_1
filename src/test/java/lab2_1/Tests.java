@@ -12,55 +12,62 @@ import edu.iis.mto.bsearch.BinarySearch;
 public class Tests {
 	
 	int[] oneElementArray;
-	int[] biggerArrayOdd;
-	int[] biggerArrayEven;
-	
-	@Before
-	public void testData() {
-		 this.oneElementArray = new int[] {5};
-		 this.biggerArrayOdd = new int[] {1,2,3,4,5};
-		 this.biggerArrayEven = new int[] {0,1,2,3,4,5};
-	}
-	
-	@After
-	public void tearDown() throws Exception {
-		this.oneElementArray = null;
-		this.biggerArrayOdd = null;
-		this.biggerArrayEven = null;
-	}
+	int[] biggerArray;
+	int key;
 	
 	@Test
 	public void Length1ShouldBeInSequence() {
-		assertTrue(BinarySearch.search(5, oneElementArray).isFound());
+		final boolean EXPECTED = true;
+		this.key = 3;
+		this.oneElementArray = new int[] {3};
+		assertThat(EXPECTED,is(BinarySearch.search(key, oneElementArray).isFound()));
 	}
 	
 	@Test
 	public void Length1ShouldNotBeInSequence() {
-		assertFalse(BinarySearch.search(1, oneElementArray).isFound());
+		final boolean EXPECTED = false;
+		this.key = 5;
+		this.oneElementArray = new int[] {3};
+		assertThat(EXPECTED,is(BinarySearch.search(key, oneElementArray).isFound()));
 	}
 	
 	@Test
 	public void ShouldBeFirst() {
-		assertEquals(1, BinarySearch.search(1, biggerArrayOdd).getPosition());
+		final int EXPECTED = 1;
+		this.key = 1;
+		this.biggerArray = new int[] {1,2,3,4,5};
+		assertThat(EXPECTED, is(BinarySearch.search(key, biggerArray).getPosition()));
 	}
 	
 	@Test
-	public void ShouldBeLast() {		
-		assertEquals(biggerArrayOdd.length, BinarySearch.search(5, biggerArrayOdd).getPosition());
+	public void ShouldBeLast() {	
+		this.key = 9;
+		this.biggerArray = new int[] {5,6,7,8,9};
+		final int EXPECTED = biggerArray.length;
+		assertThat(EXPECTED, is(BinarySearch.search(key, biggerArray).getPosition()));
 	}
 	
 	@Test
 	public void ShouldBeInTheMiddleOddArray() {
-		assertThat(3, is(BinarySearch.search(3, biggerArrayOdd).getPosition()));
+		this.key = 17;
+		this.biggerArray = new int[] {15,16,17,18,19};
+		final int EXPECTED = (biggerArray.length/2)+1;
+		assertThat(EXPECTED, is(BinarySearch.search(key, biggerArray).getPosition()));
 	}
 	
 	@Test
 	public void ShouldBeInTheMiddleEvenArray() {
-		assertThat(4, is(BinarySearch.search(3, biggerArrayEven).getPosition()));
+		this.key = 118;
+		this.biggerArray = new int[] {115,116,117,118,119,120};
+		final int EXPECTED = (biggerArray.length/2)+1;
+		assertThat(EXPECTED, is(BinarySearch.search(key, biggerArray).getPosition()));
 	}
 	
 	@Test
 	public void ShouldNotBeInSequence() {
-		assertFalse(BinarySearch.search(8, biggerArrayOdd).isFound());
+		this.key = 17;
+		this.biggerArray = new int[] {1,2,3,4,5};
+		final boolean EXPECTED = false;
+		assertThat(EXPECTED, is(BinarySearch.search(key, biggerArray).isFound()));
 	}
 }
