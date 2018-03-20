@@ -1,5 +1,7 @@
 package edu.iis.mto.bsearch;
 
+import static org.hamcrest.CoreMatchers.*;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,7 +12,7 @@ public class TestSearch {
         int key = 5;
         int seq[] = {5};
         SearchResult search = BinarySearch.search(key, seq);
-        Assert.assertTrue(search.isFound());
+        Assert.assertThat(search.isFound(), is(true));
     }
 
     @Test
@@ -18,7 +20,7 @@ public class TestSearch {
         int key = 5;
         int seq[] = {15};
         SearchResult search = BinarySearch.search(key, seq);
-        Assert.assertFalse(search.isFound());
+        Assert.assertThat(search.isFound(), is(not(true)));
     }
 
     @Test
@@ -27,7 +29,7 @@ public class TestSearch {
         int position = 1;
         int seq[] = {1, 5, 6, 9, 10, 15, 17, 20, 25, 30, 40, 55};
         SearchResult search = BinarySearch.search(key, seq);
-        Assert.assertEquals(position, search.getPosition());
+        Assert.assertEquals(search.getPosition(), is(position));
     }
 
     @Test
@@ -36,7 +38,7 @@ public class TestSearch {
         int position = 10;
         int seq[] = {1, 5, 6, 9, 10, 15, 20, 25, 40, 55};
         SearchResult search = BinarySearch.search(key, seq);
-        Assert.assertEquals(position, search.getPosition());
+        Assert.assertEquals(search.getPosition(), is(position));
     }
 
     @Test
@@ -45,7 +47,7 @@ public class TestSearch {
         int position = 4;
         int seq[] = {1, 5, 6, 9, 10, 18, 31};
         SearchResult search = BinarySearch.search(key, seq);
-        Assert.assertEquals(position, search.getPosition());
+        Assert.assertEquals(search.getPosition(), is(position));
     }
 
     @Test
@@ -53,7 +55,7 @@ public class TestSearch {
         int key = 13;
         int seq[] = {1, 5, 6, 9, 10, 15, 20, 25, 40, 55};
         SearchResult search = BinarySearch.search(key, seq);
-        Assert.assertFalse(search.isFound());
+        Assert.assertThat(search.isFound(), is(not(true)));
     }
 
 }
