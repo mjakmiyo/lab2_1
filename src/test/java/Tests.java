@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 /*
 
@@ -34,7 +35,7 @@ public class Tests {
         int value = 3;
         seq[0]=value;
         result = BinarySearch.search(value, seq);
-        Assert.assertThat(result.isFound(),is(true));
+        assertThat(result.isFound(),is(true));
     }
     @Test
     public void isNotInOneElementSequence(){
@@ -42,8 +43,8 @@ public class Tests {
         int value = 4;
         seq[0]=value;
         result = BinarySearch.search(value+1, seq);
-        Assert.assertThat(result.isFound(),is(false));
-        Assert.assertThat(result.getPosition(),is(-1));
+        assertThat(result.isFound(),is(false));
+        assertThat(result.getPosition(),is(-1));
     }
     @Test
     public void isFirstInManyElementSequence(){
@@ -53,8 +54,8 @@ public class Tests {
         seq[0]=value;
         seq[1]=23;
         result = BinarySearch.search(value, seq);
-        Assert.assertThat(result.isFound(), is(true));
-        Assert.assertThat(result.getPosition(), is(EXPECTED_POSITION));
+        assertThat(result.isFound(), is(true));
+        assertThat(result.getPosition(), is(EXPECTED_POSITION));
     }
     @Test
     public void isLastInManyElementSequence(){
@@ -66,8 +67,8 @@ public class Tests {
         seq[2]=6;
         seq[3]=value;
         result = BinarySearch.search(value, seq);
-        Assert.assertThat(result.isFound(), is(true));
-        Assert.assertThat(result.getPosition(), is(EXPECTED_POSITION));
+        assertThat(result.isFound(), is(true));
+        assertThat(result.getPosition(), is(EXPECTED_POSITION));
     }
     @Test
     public void isMiddleInManyOddElementSequence(){
@@ -79,8 +80,8 @@ public class Tests {
         seq[2]=value;
         result = BinarySearch.search(15, seq);
         result = BinarySearch.search(value, seq);
-        Assert.assertThat(result.isFound(), is(true));
-        Assert.assertThat(result.getCenter(), is(EXPECTED_POSITION));
+        assertThat(result.isFound(), is(true));
+        assertThat(result.getCenter(), is(EXPECTED_POSITION));
     }
     @Test
     public void isNotInManyElementSequence(){
@@ -94,8 +95,8 @@ public class Tests {
         seq[4]=115;
         seq[5]=223;
         result = BinarySearch.search(value, seq);
-        Assert.assertThat(result.isFound(), is(false));
-        Assert.assertThat(result.getPosition(), is(EXPECTED_POSITION));
+        assertThat(result.isFound(), is(false));
+        assertThat(result.getPosition(), is(EXPECTED_POSITION));
     }
 }
 /*
