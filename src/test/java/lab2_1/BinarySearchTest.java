@@ -1,6 +1,6 @@
 package lab2_1;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -15,12 +15,12 @@ public class BinarySearchTest {
 
     @Test
     public void elementFoundedInSequence() {
-        assertTrue(BinarySearch.search(1, in).isFound());
+        assertThat(BinarySearch.search(1, in).isFound(), Matchers.is(true));
     }
 
     @Test
     public void elementNotFoundedInSequence() {
-        assertFalse(BinarySearch.search(4, in).isFound());
+        assertThat(BinarySearch.search(4, in).isFound(), Matchers.is(false));
     }
 
     @Test
@@ -41,19 +41,11 @@ public class BinarySearchTest {
         assertThat(in[BinarySearch.search(value, in).getPosition() - 1], Matchers.is(value));
     }
 
-    @Test
+    @Test (expected=ArrayIndexOutOfBoundsException.class)
     public void elementNotFoundedInSequenceWithPosition() {
         int value = 4;
-        assertThat(in[BinarySearch.search(value, in).getPosition() - 1], Matchers.is(-1));
+        assertThat(in[BinarySearch.search(value, in).getPosition()], Matchers.is(-1));
     }
 
-    @Test
-    public void sequenceInsertedIsEmpty() {
-        try {
-            BinarySearch.search(1, in2);
-            fail();
-        } catch (IllegalArgumentException e) {
-            assertTrue(true);
-        }
-    }
+
 }

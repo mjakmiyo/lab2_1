@@ -3,6 +3,10 @@
  */
 package edu.iis.mto.bsearch;
 
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
 /**
  * Utility Class dla wyszukiwania binarnego
  * 
@@ -20,6 +24,7 @@ public class BinarySearch {
      *         sekwencji, jezeli nie znaleziony -1)
      */
     public static SearchResult search(int key, int[] seq) throws IllegalArgumentException {
+            
         if (seq.length == 0) {
             throw new IllegalArgumentException();
         }
