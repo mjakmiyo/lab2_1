@@ -28,6 +28,11 @@ public class Tests {
     static int[] seq;
     static SearchResult result;
 
+
+    @Test(expected = NullPointerException.class)
+    public void isEmptyElementSequence(){
+        seq[0]=1;
+    }
     //zadanie 3
     @Test
     public void isInOneElementSequence(){
