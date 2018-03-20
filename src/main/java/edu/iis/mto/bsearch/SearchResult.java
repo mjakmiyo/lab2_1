@@ -30,6 +30,7 @@ public class SearchResult {
 		}
 		return false;
 	}
+	
 
 	@Override
 	public String toString() {
