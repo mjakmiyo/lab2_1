@@ -33,4 +33,40 @@ public class BinarySearchTest {
         assertFalse(searchResult.isFound());
         assertEquals(-1, searchResult.getPosition());
     }
+
+    @Test
+    public void elementIsFirstInFewElementsSeq(){
+        int searched = 10;
+        int[] sequence = {10, 20, 30};
+        SearchResult searchResult = BinarySearch.search(searched, sequence);
+        assertTrue(searchResult.isFound());
+        assertEquals(searched, sequence[searchResult.getPosition()]);
+    }
+
+    @Test
+    public void elementIsLastInFewElementsSeq(){
+        int searched = 30;
+        int[] sequence = {10, 20, 30};
+        SearchResult searchResult = BinarySearch.search(searched, sequence);
+        assertTrue(searchResult.isFound());
+        assertEquals(searched, sequence[searchResult.getPosition()]);
+    }
+
+    @Test
+    public void elementIsInMiddleInFewElementsSeq(){
+        int searched = 20;
+        int[] sequence = {10, 20, 30};
+        SearchResult searchResult = BinarySearch.search(searched, sequence);
+        assertTrue(searchResult.isFound());
+        assertEquals(searched, sequence[searchResult.getPosition()]);
+    }
+
+    @Test
+    public void elementIsNotInFewElementsSeq(){
+        int searched = 1;
+        int[] sequence = {10, 20, 30};
+        SearchResult searchResult = BinarySearch.search(searched, sequence);
+        assertFalse(searchResult.isFound());
+        assertEquals(-1, searchResult.getPosition());
+    }
 }
