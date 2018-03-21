@@ -4,25 +4,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 public class BinarySearchTest {
-
-    @Before
-    public void setUp() throws Exception {
-    }
-
-    @After
-    public void tearDown() throws Exception {
-    }
 
     @Test
     public void elementIsInOneElementSeq(){
         int searched = 0;
         int[] sequence = {0};
         SearchResult searchResult = BinarySearch.search(searched, sequence);
-        assertTrue(searchResult.isFound());
-        assertEquals(searched, sequence[searchResult.getPosition()]);
+        assertThat(searchResult.isFound(), is(true));
+        assertThat(sequence[searchResult.getPosition()], is(searched));
     }
 
     @Test
@@ -30,8 +23,8 @@ public class BinarySearchTest {
         int searched = 1;
         int[] sequence = {0};
         SearchResult searchResult = BinarySearch.search(searched, sequence);
-        assertFalse(searchResult.isFound());
-        assertEquals(-1, searchResult.getPosition());
+        assertThat(searchResult.isFound(), is(false));
+        assertThat(searchResult.getPosition(), is(-1));
     }
 
     @Test
@@ -39,8 +32,8 @@ public class BinarySearchTest {
         int searched = 10;
         int[] sequence = {10, 20, 30};
         SearchResult searchResult = BinarySearch.search(searched, sequence);
-        assertTrue(searchResult.isFound());
-        assertEquals(searched, sequence[searchResult.getPosition()]);
+        assertThat(searchResult.isFound(), is(true));
+        assertThat(sequence[searchResult.getPosition()], is(searched));
     }
 
     @Test
@@ -48,8 +41,8 @@ public class BinarySearchTest {
         int searched = 30;
         int[] sequence = {10, 20, 30};
         SearchResult searchResult = BinarySearch.search(searched, sequence);
-        assertTrue(searchResult.isFound());
-        assertEquals(searched, sequence[searchResult.getPosition()]);
+        assertThat(searchResult.isFound(), is(true));
+        assertThat(sequence[searchResult.getPosition()], is(searched));
     }
 
     @Test
@@ -57,8 +50,8 @@ public class BinarySearchTest {
         int searched = 20;
         int[] sequence = {10, 20, 30};
         SearchResult searchResult = BinarySearch.search(searched, sequence);
-        assertTrue(searchResult.isFound());
-        assertEquals(searched, sequence[searchResult.getPosition()]);
+        assertThat(searchResult.isFound(), is(true));
+        assertThat(sequence[searchResult.getPosition()], is(searched));
     }
 
     @Test
@@ -66,16 +59,16 @@ public class BinarySearchTest {
         int searched = 1;
         int[] sequence = {10, 20, 30};
         SearchResult searchResult = BinarySearch.search(searched, sequence);
-        assertFalse(searchResult.isFound());
-        assertEquals(-1, searchResult.getPosition());
+        assertThat(searchResult.isFound(), is(false));
+        assertThat(searchResult.getPosition(), is(-1));
     }
 
     @Test
-    public void ZeroElementsSeqThrowsException(){
+    public void zeroElementsSeqThrowsException(){
         int searched = 1;
         int[] sequence = {};
         try {
-            SearchResult searchResult = BinarySearch.search(searched, sequence);
+            BinarySearch.search(searched, sequence);
             fail();
         } catch (IllegalArgumentException ex){
         }
