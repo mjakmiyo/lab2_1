@@ -27,12 +27,15 @@ public class BinarySearch {
 		int start = 0;
 		int end = seq.length - 1;
 		int center;
+		int counter = 0;
 		SearchResult result = new SearchResult();
 
 		while (start <= end) {
+			counter++;
 			center = (start + end) / 2;
 			if (seq[center] == key) {
 				result.setPosition(center);
+				result.setNumberOfIteration(counter);
 				break;
 			} else {
 				if (seq[center] < key)

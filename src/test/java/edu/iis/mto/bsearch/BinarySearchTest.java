@@ -4,7 +4,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.*;
 
 public class BinarySearchTest {
@@ -72,5 +74,17 @@ public class BinarySearchTest {
             fail();
         } catch (IllegalArgumentException ex){
         }
+    }
+
+    @Test
+    public void performanceIsLogarythmic(){
+        int arrayLength = 1000000;
+        int searched = arrayLength - 1;
+        int[] sequence = new int[arrayLength];
+        for(int i = 0; i < arrayLength; i++){
+            sequence[i] = i;
+        }
+        SearchResult searchResult = BinarySearch.search(searched, sequence);
+        assertThat((double)searchResult.getNumberOfIteration(), not(greaterThan(Math.ceil(Math.log(arrayLength) / Math.log(2)))));
     }
 }
