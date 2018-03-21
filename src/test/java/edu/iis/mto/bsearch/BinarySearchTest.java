@@ -69,4 +69,15 @@ public class BinarySearchTest {
         assertFalse(searchResult.isFound());
         assertEquals(-1, searchResult.getPosition());
     }
+
+    @Test
+    public void ZeroElementsSeqThrowsException(){
+        int searched = 1;
+        int[] sequence = {};
+        try {
+            SearchResult searchResult = BinarySearch.search(searched, sequence);
+            fail();
+        } catch (IllegalArgumentException ex){
+        }
+    }
 }
