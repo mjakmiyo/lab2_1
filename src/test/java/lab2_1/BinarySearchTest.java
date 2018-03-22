@@ -13,6 +13,7 @@ public class BinarySearchTest {
     
     int evenSeq[] = {1, 3, 4, 7, 9, 13, 21, 22, 34, 42};
     int oddSeq[] = {1, 2, 7, 12, 24, 37, 45, 57, 68, 77, 78};
+    int emptySeq[] = {};
 
     @Test
     public void searchingForExistingKeyInSequenceShouldReturnTrue() {
@@ -66,6 +67,12 @@ public class BinarySearchTest {
         int value = 6;
         int position = -1;
         assertThat(BinarySearch.search(value, evenSeq).getPosition(), Matchers.is(position));
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void searchingInEmptySequenceShouldThrowIllegalArgumentException() {
+        int value = 1;
+        BinarySearch.search(value, emptySeq);
     }
     
 }
