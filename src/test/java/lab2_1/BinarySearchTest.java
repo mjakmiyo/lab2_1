@@ -11,42 +11,61 @@ import edu.iis.mto.bsearch.BinarySearch;
 
 public class BinarySearchTest {
     
-    int seq[] = {1, 3, 4, 7, 9, 13, 21, 22, 34, 42, 49};
+    int evenSeq[] = {1, 3, 4, 7, 9, 13, 21, 22, 34, 42};
+    int oddSeq[] = {1, 2, 7, 12, 24, 37, 45, 57, 68, 77, 78};
 
     @Test
     public void searchingForExistingKeyInSequenceShouldReturnTrue() {
         int value = 3;
-        assertTrue(BinarySearch.search(value, seq).isFound());
+        assertTrue(BinarySearch.search(value, evenSeq).isFound());
     }
 
     @Test
     public void searchingForNotExistingKeyInSequenceShouldReturnFalse() {
         int value = 6;
-        assertFalse(BinarySearch.search(value, seq).isFound());
+        assertFalse(BinarySearch.search(value, evenSeq).isFound());
     }
     
     @Test
     public void positionOfSearchingFirstKeyInSequenceShouldReturnOne() {
         int value = 1;
-        assertThat(BinarySearch.search(value, seq).getPosition(), Matchers.is(1));
+        int position = 1;
+        assertThat(BinarySearch.search(value, evenSeq).getPosition(), Matchers.is(position));
     }
     
     @Test
     public void positionOfSearchingLastKeyInSequenceShouldReturnLengthOfSequence() {
-        int value = 49;
-        assertThat(BinarySearch.search(value, seq).getPosition(), Matchers.is(seq.length));
+        int value = 42;
+        int position = evenSeq.length;
+        assertThat(BinarySearch.search(value, evenSeq).getPosition(), Matchers.is(position));
     }
     
     @Test
-    public void positionOfSearchingCenterKeyInSequenceShouldReturnHalfPlusOneOfSequenceLength() {
+    public void positionOfSearchingCenterKeyInOddSequenceShouldReturnHalfPlusOneOfSequenceLength() {
+        int value = 37;
+        int position = oddSeq.length/2+1;
+        assertThat(BinarySearch.search(value, oddSeq).getPosition(), Matchers.is(position));
+    }
+    
+    @Test
+    public void positionOfSearchingLeftCenterKeyInEvenSequenceShouldReturnHalfOfSequenceLength() {
+        int value = 9;
+        int position = evenSeq.length/2;
+        assertThat(BinarySearch.search(value, evenSeq).getPosition(), Matchers.is(position));
+    }
+    
+    @Test
+    public void positionOfSearchingRightCenterKeyInEvenSequenceShouldReturnHalfPlusOneOfSequenceLength() {
         int value = 13;
-        assertThat(BinarySearch.search(value, seq).getPosition(), Matchers.is(seq.length/2+1));
+        int position = evenSeq.length/2+1;
+        assertThat(BinarySearch.search(value, evenSeq).getPosition(), Matchers.is(position));
     }
     
     @Test
     public void positionOfSearchingNotExistingKeyShouldReturnMinusOne() {
         int value = 6;
-        assertThat(BinarySearch.search(value, seq).getPosition(), Matchers.is(-1));
+        int position = -1;
+        assertThat(BinarySearch.search(value, evenSeq).getPosition(), Matchers.is(position));
     }
     
 }
