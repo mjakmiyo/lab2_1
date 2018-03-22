@@ -7,45 +7,53 @@ import org.junit.Test;
 
 import edu.iis.mto.bsearch.BinarySearch;
 
-
 public class BinarySearchTest {
 
-    int in[] = {1, 2, 3, 5, 9, 10, 15, 20, 35};
-    int in2[] = {};
+	int seq[] = { 1, 2, 3, 5, 9, 10, 15, 20, 35 };
+	int seq2[] = {};
 
-    @Test
-    public void elementFoundedInSequence() {
-        assertThat(BinarySearch.search(1, in).isFound(), Matchers.is(true));
-    }
+	@Test
+	public void elementFoundedInSequence() {
+		assertThat(BinarySearch.search(1, seq).isFound(), Matchers.is(true));
+	}
 
-    @Test
-    public void elementNotFoundedInSequence() {
-        assertThat(BinarySearch.search(4, in).isFound(), Matchers.is(false));
-    }
+	@Test
+	public void elementNotFoundedInSequence() {
+		assertThat(BinarySearch.search(4, seq).isFound(), Matchers.is(false));
+	}
 
-    @Test
-    public void elementFoundedInSequenceGetFirstElement() {
-        int value = 1;
-        assertThat(in[BinarySearch.search(value, in).getPosition() - 1], Matchers.is(value));
-    }
+	@Test
+	public void elementFoundedInSequenceOnFirstPosition() {
+		int value = 1;
+		int pos = 1;
+		assertThat(BinarySearch.search(value, seq).getPosition(), Matchers.is(pos));
+	}
 
-    @Test
-    public void elementFoundedInSequenceGetLastElement() {
-        int value = 35;
-        assertThat(in[BinarySearch.search(value, in).getPosition() - 1], Matchers.is(value));
-    }
+	@Test
+	public void elementFoundedInSequenceOnLastPosition() {
+		int value = 35;
+		int pos = 9;
+		assertThat(BinarySearch.search(value, seq).getPosition(), Matchers.is(pos));
+	}
 
-    @Test
-    public void elementFoundedInSequenceGetMiddleElement() {
-        int value = in.length / 2 + 1;
-        assertThat(in[BinarySearch.search(value, in).getPosition() - 1], Matchers.is(value));
-    }
+	@Test
+	public void elementFoundedInSequenceOnMiddlePosition() {
+		int value = 9;
+		int pos = seq.length / 2 + 1;
+		assertThat(BinarySearch.search(value, seq).getPosition(), Matchers.is(pos));
+	}
 
-    @Test (expected=ArrayIndexOutOfBoundsException.class)
-    public void elementNotFoundedInSequenceWithPosition() {
-        int value = 4;
-        assertThat(in[BinarySearch.search(value, in).getPosition()], Matchers.is(-1));
-    }
+	@Test
+	public void elementNotFoundedInSequenceReturningPosition() {
+		int value = 4;
+		int pos = -1;
+		assertThat(BinarySearch.search(value, seq).getPosition(), Matchers.is(pos));
+	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void sequenceEmptyException() {
+		int value = 4;
+		BinarySearch.search(value, seq2);
+	}
 
 }
