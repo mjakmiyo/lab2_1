@@ -1,5 +1,6 @@
 import edu.iis.mto.bsearch.BinarySearch;
 import edu.iis.mto.bsearch.SearchResult;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -29,9 +30,12 @@ public class Tests {
     static SearchResult result;
 
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = IllegalArgumentException.class )
     public void isEmptyElementSequence(){
-        seq[0]=1;
+        seq=new int[0];
+        int value = 3;
+        result = BinarySearch.search(value, seq);
+
     }
     //zadanie 3
     @Test
@@ -102,6 +106,12 @@ public class Tests {
         result = BinarySearch.search(value, seq);
         assertThat(result.isFound(), is(false));
         assertThat(result.getPosition(), is(EXPECTED_POSITION));
+    }
+    @After
+    public void tearDown() {
+        seq=null;
+        result=null;
+        //System.out.println();
     }
 }
 /*
