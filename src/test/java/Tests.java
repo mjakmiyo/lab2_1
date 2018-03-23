@@ -1,10 +1,9 @@
 import edu.iis.mto.bsearch.BinarySearch;
 import edu.iis.mto.bsearch.SearchResult;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 
 /*
@@ -81,16 +80,43 @@ public class Tests {
     }
     @Test
     public void isMiddleInManyOddElementSequence(){
-        seq=new int[3];
+        seq=new int[5];
         int value = 23;
         final int EXPECTED_POSITION = seq.length/2;
         seq[0]=4;
-        seq[1]=15;
+        seq[1]=7;
         seq[2]=value;
-        result = BinarySearch.search(15, seq);
+        seq[3]=26;
+        seq[4]=28;
+        result = BinarySearch.search(value, seq);
+        //assertThat(result.isFound(), is(true));
+        assertThat(result.getPosition(), is(EXPECTED_POSITION));
+    }
+    @Test
+    public void isMiddleLeftInManyEvenElementSequence(){
+        seq=new int[4];
+        int value = 23;
+        final int EXPECTED_POSITION = seq.length/2-1;
+        seq[0]=4;
+        seq[1]=value;
+        seq[2]=26;
+        seq[3]=41;
         result = BinarySearch.search(value, seq);
         assertThat(result.isFound(), is(true));
-        assertThat(result.getCenter(), is(EXPECTED_POSITION));
+        assertThat(result.getPosition(), is(equalTo(EXPECTED_POSITION)));
+    }
+    @Test
+    public void isMiddleRightInManyEvenElementSequence(){
+        seq=new int[4];
+        int value = 23;
+        final int EXPECTED_POSITION = seq.length/2;
+        seq[0]=4;
+        seq[1]=6;
+        seq[2]=value;
+        seq[3]=41;
+        result = BinarySearch.search(value, seq);
+        assertThat(result.isFound(), is(true));
+        assertThat(result.getPosition(), is(equalTo(EXPECTED_POSITION)));
     }
     @Test
     public void isNotInManyElementSequence(){
@@ -111,7 +137,6 @@ public class Tests {
     public void tearDown() {
         seq=null;
         result=null;
-        //System.out.println();
     }
 }
 /*
