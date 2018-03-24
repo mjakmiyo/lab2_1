@@ -1,9 +1,30 @@
 import edu.iis.mto.bsearch.BinarySearch;
+import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 
 public class BinarySearchTests {
+
+    private static int[] emptySequence;
+    private static int[] oneElementSequence;
+    private static int[] longSequence;
+
+    @BeforeClass
+    public static void setUpBeforeClass() {
+        emptySequence = new int[0];
+        oneElementSequence = new int[] {5};
+        longSequence = new int[] {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
+    }
+
+    @AfterClass
+    public static void tearDownAfterClass() {
+        emptySequence = null;
+        oneElementSequence = null;
+        longSequence = null;
+    }
+
     @Test
     public void shouldFoundKeyInSequenceWithLength1() {
         Assert.assertTrue(BinarySearch.search(1, new int[] {1, 2 ,3}).isFound());
