@@ -28,4 +28,12 @@ public class BinarySearchTests {
     public void shouldFoundKeyInSequenceWithLengthBiggerThan1() {
         Assert.assertTrue(BinarySearch.search(12, new int[] {1, 2, 4, 5, 12, 14}).isFound());
     }
+    @Test
+    public void shouldNotFoundKeyInSequenceWithLengthBiggerThan1() {
+        Assert.assertFalse(BinarySearch.search(6, new int[] {1, 2, 4, 5, 12, 14}).isFound());
+    }
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowIllegalArgumentException() {
+        BinarySearch.search(52, new int[0]);
+    }
 }
