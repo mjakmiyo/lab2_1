@@ -22,6 +22,17 @@ public class Tests {
     }
 	
 	@Test
+    public void SequenceShouldNotBeSorted() {
+        int[] notSortedSequence = {25, 345, 1, 1000, 10};
+        final boolean EXPECTED = false;
+        int key = 25;
+        SearchResult result = new SearchResult();      
+        BinarySearch.search(key, notSortedSequence);        
+		result = BinarySearch.search(key, notSortedSequence);
+		assertThat(EXPECTED, is(result.isFound()));
+    }
+	
+	@Test
 	public void ShouldBeInOneElementSequence() {
 		final boolean EXPECTED = true;
 		SearchResult result = new SearchResult();
