@@ -1,9 +1,10 @@
 import edu.iis.mto.bsearch.BinarySearch;
 import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class BinarySearchTests {
 
@@ -27,34 +28,44 @@ public class BinarySearchTests {
 
     @Test
     public void shouldFoundKeyInSequenceWithLength1() {
-        Assert.assertTrue(BinarySearch.search(1, new int[] {1, 2 ,3}).isFound());
+        int key = oneElementSequence[0];
+        assertThat(BinarySearch.search(key, oneElementSequence).isFound(), is(true));
     }
     @Test
     public void shouldNotFoundKeyInSequenceWithLength1() {
-        Assert.assertFalse(BinarySearch.search(1, new int[] {5, 8, 12, 40}).isFound());
+        int key = oneElementSequence[0] + 1;
+        assertThat(BinarySearch.search(key, oneElementSequence).isFound(), is(false));
     }
     @Test
     public void soughtKeyShouldBeFirstOnElementList() {
-        Assert.assertEquals(1 ,BinarySearch.search(1, new int[] {1, 3, 5}).getPosition());
+        int key = longSequence[0];
+        int position = 1;
+        assertThat(BinarySearch.search(key, longSequence).getPosition(), is(position));
     }
     @Test
     public void soughtKeyShouldBeLastOnElementList() {
-        Assert.assertEquals(3 ,BinarySearch.search(3, new int[] {1, 2, 3}).getPosition());
+        int key = longSequence[longSequence.length - 1];
+        int position = longSequence.length;
+        assertThat(BinarySearch.search(key, longSequence).getPosition(), is(position));
     }
     @Test
     public void soughtKeyShouldBeInMiddleOnElementList() {
-        Assert.assertEquals(3 ,BinarySearch.search(2, new int[] {0, 1, 2, 5, 9}).getPosition());
+        int key = longSequence[longSequence.length / 2 - 1];
+        int position = longSequence.length / 2;
+        assertThat(BinarySearch.search(key, longSequence).getPosition(), is(position));
     }
     @Test
     public void shouldFoundKeyInSequenceWithLengthBiggerThan1() {
-        Assert.assertTrue(BinarySearch.search(12, new int[] {1, 2, 4, 5, 12, 14}).isFound());
+        int key = longSequence[2];
+        assertThat(BinarySearch.search(key, longSequence).isFound(), is(true));
     }
     @Test
     public void shouldNotFoundKeyInSequenceWithLengthBiggerThan1() {
-        Assert.assertFalse(BinarySearch.search(6, new int[] {1, 2, 4, 5, 12, 14}).isFound());
+        int key = 9999;
+        assertThat(BinarySearch.search(key, longSequence).isFound(), is(false));
     }
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowIllegalArgumentException() {
-        BinarySearch.search(52, new int[0]);
+        BinarySearch.search(9999, emptySequence);
     }
 }
