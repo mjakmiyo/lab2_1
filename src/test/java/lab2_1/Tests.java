@@ -10,15 +10,14 @@ import org.junit.Test;
 import edu.iis.mto.bsearch.BinarySearch;
 import edu.iis.mto.bsearch.SearchResult;
 
-public class Tests {	
-	
+public class Tests {		
+
 	@Test(expected = IllegalArgumentException.class )
     public void SequenceShouldBeEmpty(){
 		SearchResult result = new SearchResult();
         int[] sequence = new int[0];
         int key = 3;
         result = BinarySearch.search(key, sequence);
-
     }
 	
 	@Test
