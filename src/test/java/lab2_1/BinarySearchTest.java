@@ -11,6 +11,7 @@ public class BinarySearchTest {
 
 	int seq[] = { 1, 2, 3, 5, 9, 10, 15, 20, 35 };
 	int seq2[] = {};
+	int seq3[]= {1,2,3,4,5,6,7,8,9,10};
 
 	@Test
 	public void elementFoundedInSequence() {
@@ -42,7 +43,6 @@ public class BinarySearchTest {
 		int pos = seq.length / 2 + 1;
 		assertThat(BinarySearch.search(value, seq).getPosition(), Matchers.is(pos));
 	}
-
 	@Test
 	public void elementNotFoundedInSequenceReturningPosition() {
 		int value = 4;
@@ -55,5 +55,16 @@ public class BinarySearchTest {
 		int value = 4;
 		BinarySearch.search(value, seq2);
 	}
-
+	@Test
+	public void elementFoundedInSequenceOnLeftMiddlePosition() {
+		int value=5;
+		int pos=seq3.length/2;
+		assertThat(BinarySearch.search(value, seq3).getPosition(), Matchers.is(pos));
+	}
+	@Test
+	public void elementFoundedInSequenceOnRightMiddlePosition() {
+		int value=6;
+		int pos=seq3.length/2+1;
+		assertThat(BinarySearch.search(value, seq3).getPosition(), Matchers.is(pos));
+	}
 }
