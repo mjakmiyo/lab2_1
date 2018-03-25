@@ -10,20 +10,23 @@ public class BinarySearchTests {
 
     private static int[] emptySequence;
     private static int[] oneElementSequence;
-    private static int[] longSequence;
+    private static int[] evenLengthSequence;
+    private static int[] oddLengthSequence;
 
     @BeforeClass
     public static void setUpBeforeClass() {
         emptySequence = new int[0];
         oneElementSequence = new int[] {5};
-        longSequence = new int[] {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
+        evenLengthSequence = new int[] {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
+        oddLengthSequence = new int[] {2, 4, 6, 8, 10, 12, 14, 16, 18};
     }
 
     @AfterClass
     public static void tearDownAfterClass() {
         emptySequence = null;
         oneElementSequence = null;
-        longSequence = null;
+        evenLengthSequence = null;
+        oddLengthSequence = null;
     }
 
     @Test
@@ -38,34 +41,65 @@ public class BinarySearchTests {
     }
     @Test
     public void soughtKeyShouldBeFirstOnElementList() {
-        int key = longSequence[0];
+        int key = evenLengthSequence[0];
         int position = 1;
-        assertThat(BinarySearch.search(key, longSequence).getPosition(), is(position));
+        assertThat(BinarySearch.search(key, evenLengthSequence).getPosition(), is(position));
     }
     @Test
     public void soughtKeyShouldBeLastOnElementList() {
-        int key = longSequence[longSequence.length - 1];
-        int position = longSequence.length;
-        assertThat(BinarySearch.search(key, longSequence).getPosition(), is(position));
+        int key = evenLengthSequence[evenLengthSequence.length - 1];
+        int position = evenLengthSequence.length;
+        assertThat(BinarySearch.search(key, evenLengthSequence).getPosition(), is(position));
     }
     @Test
-    public void soughtKeyShouldBeInMiddleOnElementList() {
-        int key = longSequence[longSequence.length / 2 - 1];
-        int position = longSequence.length / 2;
-        assertThat(BinarySearch.search(key, longSequence).getPosition(), is(position));
+    public void soughtKeyShouldBeInMiddleOfEvenLengthElementList() {
+        int key = evenLengthSequence[evenLengthSequence.length / 2 - 1];
+        int position = evenLengthSequence.length / 2;
+        assertThat(BinarySearch.search(key, evenLengthSequence).getPosition(), is(position));
+    }
+    @Test
+    public void soughtKeyShouldBeInMiddleOfOddLengthElementList() {
+        int key = oddLengthSequence[oddLengthSequence.length / 2];
+        int position = oddLengthSequence.length / 2 + 1;
+        assertThat(BinarySearch.search(key, oddLengthSequence).getPosition(), is(position));
+    }
+    @Test
+    public void soughtKeyShouldBeInPreviousToMiddlePositionOfEvenLengthElementList() {
+        int key = evenLengthSequence[evenLengthSequence.length / 2 - 2];
+        int position = evenLengthSequence.length / 2 - 1;
+        assertThat(BinarySearch.search(key, evenLengthSequence).getPosition(), is(position));
+    }
+    @Test
+    public void soughtKeyShouldBeInPreviousToMiddlePositionOfOddLengthElementList() {
+        int key = oddLengthSequence[oddLengthSequence.length / 2 - 1];
+        int position = oddLengthSequence.length / 2;
+        assertThat(BinarySearch.search(key, oddLengthSequence).getPosition(), is(position));
+    }
+    @Test
+    public void soughtKeyShouldBeInNextToMiddlePositionOfEvenLengthElementList() {
+        int key = evenLengthSequence[evenLengthSequence.length / 2];
+        int position = evenLengthSequence.length / 2 + 1;
+        assertThat(BinarySearch.search(key, evenLengthSequence).getPosition(), is(position));
+    }
+    @Test
+    public void soughtKeyShouldBeInNextToMiddlePositionOfOddLengthElementList() {
+        int key = oddLengthSequence[oddLengthSequence.length / 2 + 1];
+        int position = oddLengthSequence.length / 2 + 2;
+        assertThat(BinarySearch.search(key, oddLengthSequence).getPosition(), is(position));
     }
     @Test
     public void shouldFoundKeyInSequenceWithLengthBiggerThan1() {
-        int key = longSequence[2];
-        assertThat(BinarySearch.search(key, longSequence).isFound(), is(true));
+        int key = evenLengthSequence[2];
+        assertThat(BinarySearch.search(key, evenLengthSequence).isFound(), is(true));
     }
     @Test
     public void shouldNotFoundKeyInSequenceWithLengthBiggerThan1() {
         int key = 9999;
-        assertThat(BinarySearch.search(key, longSequence).isFound(), is(false));
+        assertThat(BinarySearch.search(key, evenLengthSequence).isFound(), is(false));
     }
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowIllegalArgumentException() {
         BinarySearch.search(9999, emptySequence);
     }
 }
+
