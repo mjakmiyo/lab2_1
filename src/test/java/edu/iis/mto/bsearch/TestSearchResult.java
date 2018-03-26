@@ -14,4 +14,12 @@ public class TestSearchResult {
 		searchResult=BinarySearch.search(key, seq);
 		Assert.assertTrue(searchResult.isFound());
 	}
+	
+	@Test
+	public void notFoundInSequence() {
+		int key=7;
+		int seq[]= {8};
+		searchResult=BinarySearch.search(key, seq);
+		Assert.assertFalse(searchResult.isFound());
+	}
 }
