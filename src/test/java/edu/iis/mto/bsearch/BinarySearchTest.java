@@ -25,4 +25,16 @@ public class BinarySearchTest {
         assertThat(searchResult.isFound(), is(false));
         assertThat(searchResult.getPosition(), is(-1));
     }
+
+    @Test
+    public void itemShouldBeFoundAtBeginningOfManyElementsSeq() {
+        int key = 1;
+        int[] seq = {1,2,3,4,5};
+
+        SearchResult searchResult = BinarySearch.search(key, seq);
+        assertThat(searchResult.isFound(), is(true));
+        assertThat(seq[searchResult.getPosition()], is(key));
+    }
+
+
 }
