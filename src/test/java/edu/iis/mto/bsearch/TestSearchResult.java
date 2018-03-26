@@ -31,4 +31,13 @@ public class TestSearchResult {
 		searchResult=BinarySearch.search(key, seq);
 		Assert.assertEquals(index,searchResult.getPosition());
 	}
+	
+	@Test
+	public void isLastInSequence() {
+		int key=7;
+		int seq[]= {5,6,7};
+		int index=3;
+		searchResult=BinarySearch.search(key, seq);
+		Assert.assertEquals(index,searchResult.getPosition());
+	}
 }
