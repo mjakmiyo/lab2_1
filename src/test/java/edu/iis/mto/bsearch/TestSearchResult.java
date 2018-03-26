@@ -40,4 +40,13 @@ public class TestSearchResult {
 		searchResult=BinarySearch.search(key, seq);
 		Assert.assertEquals(index,searchResult.getPosition());
 	}
+	
+	@Test
+	public void isMiddleInSequence() {
+		int key=6;
+		int seq[]= {5,6,7};
+		int index=2;
+		searchResult=BinarySearch.search(key, seq);
+		Assert.assertEquals(index,searchResult.getPosition());
+	}
 }
