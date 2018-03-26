@@ -29,7 +29,7 @@ public class BinarySearchTest {
     @Test
     public void itemShouldBeFoundAtBeginningOfManyElementsSeq() {
         int key = 1;
-        int[] seq = {1,2,3,4,5};
+        int[] seq = {1, 2, 3, 4, 5};
 
         SearchResult searchResult = BinarySearch.search(key, seq);
         assertThat(searchResult.isFound(), is(true));
@@ -39,7 +39,7 @@ public class BinarySearchTest {
     @Test
     public void itemShouldBeFoundInMiddleOfManyElementsSeq() {
         int key = 3;
-        int[] seq = {1,2,3,4,5};
+        int[] seq = {1, 2, 3, 4, 5};
 
         SearchResult searchResult = BinarySearch.search(key, seq);
         assertThat(searchResult.isFound(), is(true));
@@ -49,7 +49,7 @@ public class BinarySearchTest {
     @Test
     public void itemShouldBeFoundInEndOfManyElementsSeq() {
         int key = 5;
-        int[] seq = {1,2,3,4,5};
+        int[] seq = {1, 2, 3, 4, 5};
 
         SearchResult searchResult = BinarySearch.search(key, seq);
         assertThat(searchResult.isFound(), is(true));
@@ -59,7 +59,7 @@ public class BinarySearchTest {
     @Test
     public void itemShouldNotBeFoundInManyElementsSeq() {
         int key = 6;
-        int[] seq = {1,2,3,4,5};
+        int[] seq = {1, 2, 3, 4, 5};
 
         SearchResult searchResult = BinarySearch.search(key, seq);
         assertThat(searchResult.isFound(), is(false));
@@ -69,7 +69,7 @@ public class BinarySearchTest {
     @Test
     public void itemShouldBeFoundLeftFromMidInManyElementsSeq() {
         int key = 3;
-        int[] seq = {1,2,3,4,5,6};
+        int[] seq = {1, 2, 3, 4, 5, 6};
 
         SearchResult searchResult = BinarySearch.search(key, seq);
         assertThat(searchResult.isFound(), is(true));
@@ -79,7 +79,7 @@ public class BinarySearchTest {
     @Test
     public void itemShouldBeFoundRightFromMidInManyElementsSeq() {
         int key = 4;
-        int[] seq = {1,2,3,4,5,6};
+        int[] seq = {1, 2, 3, 4, 5, 6};
 
         SearchResult searchResult = BinarySearch.search(key, seq);
         assertThat(searchResult.isFound(), is(true));
