@@ -43,7 +43,7 @@ public class TestSearchResult {
 	
 	@Test
 	public void isLastInSequence() {
-		int key=7;
+		int key=41;
 		int seq[]= {5,6,7,19,23,25,32,41};
 		int index=seq.length;
 		searchResult=BinarySearch.search(key, seq);
@@ -65,5 +65,23 @@ public class TestSearchResult {
 		int seq[]= {5,6,7,34,53,99,111,122};
 		searchResult=BinarySearch.search(key, seq);
 		Assert.assertThat(searchResult.isFound(),is(false));
+	}
+	
+	@Test
+	public void isMiddleLeftInEvenSequence() {
+		int key=7;
+		int seq[]= {5,6,7,34,53,99};
+		int index=seq.length/2;
+		searchResult=BinarySearch.search(key, seq);
+		Assert.assertThat(searchResult.getPosition(),is(index));
+	}
+	
+	@Test
+	public void isMiddleRightInEvenSequence() {
+		int key=34;
+		int seq[]= {5,6,7,34,53,99};
+		int index=seq.length/2+1;
+		searchResult=BinarySearch.search(key, seq);
+		Assert.assertThat(searchResult.getPosition(),is(index));
 	}
 }
