@@ -10,69 +10,74 @@ import edu.iis.mto.bsearch.BinarySearch;
 
 
 public class BinarySearchTest {
-    
-    int evenSeq[] = {1, 3, 4, 7, 9, 13, 21, 22, 34, 42};
-    int oddSeq[] = {1, 2, 7, 12, 24, 37, 45, 57, 68, 77, 78};
-    int emptySeq[] = {};
 
     @Test
     public void searchingForExistingKeyInSequenceShouldReturnTrue() {
+        int seq[] = {1, 3, 4, 7, 9, 28, 49};
         int value = 3;
-        assertTrue(BinarySearch.search(value, evenSeq).isFound());
+        assertTrue(BinarySearch.search(value, seq).isFound());
     }
 
     @Test
     public void searchingForNotExistingKeyInSequenceShouldReturnFalse() {
+        int seq[] = {4, 7, 12};
         int value = 6;
-        assertFalse(BinarySearch.search(value, evenSeq).isFound());
+        assertFalse(BinarySearch.search(value, seq).isFound());
     }
     
     @Test
     public void positionOfSearchingFirstKeyInSequenceShouldReturnOne() {
-        int value = 1;
+        int seq[] = {3, 7, 9, 13, 22, 48};
+        int value = 3;
         int position = 1;
-        assertThat(BinarySearch.search(value, evenSeq).getPosition(), Matchers.is(position));
+        assertThat(BinarySearch.search(value, seq).getPosition(), Matchers.is(position));
     }
     
     @Test
     public void positionOfSearchingLastKeyInSequenceShouldReturnLengthOfSequence() {
-        int value = 42;
-        int position = evenSeq.length;
-        assertThat(BinarySearch.search(value, evenSeq).getPosition(), Matchers.is(position));
+        int seq[] = {2, 4, 14, 29, 32, 33, 49, 59};
+        int value = 59;
+        int position = seq.length;
+        assertThat(BinarySearch.search(value, seq).getPosition(), Matchers.is(position));
     }
     
     @Test
-    public void positionOfSearchingCenterKeyInOddSequenceShouldReturnHalfPlusOneOfSequenceLength() {
+    public void positionOfSearchingCenterKeyInOddSequenceShouldReturnCorrectPosition() {
+        int seq[] = {1, 2, 7, 12, 24, 37, 45, 57, 68, 77, 78};
         int value = 37;
-        int position = oddSeq.length/2+1;
-        assertThat(BinarySearch.search(value, oddSeq).getPosition(), Matchers.is(position));
+        int position = 6;
+        assertThat(BinarySearch.search(value, seq).getPosition(), Matchers.is(position));
     }
     
     @Test
-    public void positionOfSearchingLeftCenterKeyInEvenSequenceShouldReturnHalfOfSequenceLength() {
+    public void positionOfSearchingLeftCenterKeyInEvenSequenceShouldReturnCorrectPosition() {
+        int seq[] = {1, 3, 4, 7, 9, 13, 21, 22, 34, 42};
         int value = 9;
-        int position = evenSeq.length/2;
-        assertThat(BinarySearch.search(value, evenSeq).getPosition(), Matchers.is(position));
+        int position = 5;
+        assertThat(BinarySearch.search(value, seq).getPosition(), Matchers.is(position));
     }
     
     @Test
-    public void positionOfSearchingRightCenterKeyInEvenSequenceShouldReturnHalfPlusOneOfSequenceLength() {
+    public void positionOfSearchingRightCenterKeyInEvenSequenceShouldReturnCorrectPosition() {
+        int seq[] = {1, 3, 8, 11, 12, 13, 14, 22, 38, 97};
         int value = 13;
-        int position = evenSeq.length/2+1;
-        assertThat(BinarySearch.search(value, evenSeq).getPosition(), Matchers.is(position));
+        int position = 6;
+        assertThat(BinarySearch.search(value, seq).getPosition(), Matchers.is(position));
     }
     
     @Test
     public void positionOfSearchingNotExistingKeyShouldReturnMinusOne() {
+        int seq[] = {2, 4, 5, 7, 9, 30, 42};
         int value = 6;
         int position = -1;
-        assertThat(BinarySearch.search(value, evenSeq).getPosition(), Matchers.is(position));
+        assertThat(BinarySearch.search(value, seq).getPosition(), Matchers.is(position));
     }
     
     @Test(expected = IllegalArgumentException.class)
     public void searchingInEmptySequenceShouldThrowIllegalArgumentException() {
+        int seq[] = {};
         int value = 1;
-        BinarySearch.search(value, emptySeq);
+        BinarySearch.search(value, seq);
     }
     
 }
