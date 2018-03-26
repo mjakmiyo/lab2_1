@@ -22,4 +22,13 @@ public class TestSearchResult {
 		searchResult=BinarySearch.search(key, seq);
 		Assert.assertFalse(searchResult.isFound());
 	}
+	
+	@Test
+	public void isFirstInSequence() {
+		int key=7;
+		int seq[]= {7,8,9};
+		int index=1;
+		searchResult=BinarySearch.search(key, seq);
+		Assert.assertEquals(index,searchResult.getPosition());
+	}
 }
