@@ -19,7 +19,7 @@ public class BinarySearchTest {
         int[] seq = {3};
         int key = 3;
         int expectedPosition = 1;
-        assertThat(search(key, seq).getPosition(), is(expectedPosition));
+        assertThat( search( key, seq ).getPosition(), is( expectedPosition ) );
     }
 
     @Test
@@ -27,7 +27,7 @@ public class BinarySearchTest {
         int[] seq = {1};
         int key = 2;
         int expectedPosition = -1;
-        assertThat(search(key, seq).getPosition(), is(expectedPosition));
+        assertThat( search( key, seq ).getPosition(), is( expectedPosition ) );
     }
 
     @Test
@@ -35,7 +35,7 @@ public class BinarySearchTest {
         int[] seq = {1, 2, 3, 5};
         int key = 1;
         int expectedPosition = 1;
-        assertThat(search(key, seq).getPosition(), is(expectedPosition));
+        assertThat( search( key, seq ).getPosition(), is( expectedPosition ) );
     }
 
     @Test
@@ -43,7 +43,7 @@ public class BinarySearchTest {
         int[] seq = {1, 2, 4, 5, 6, 10, 13, 15};
         int key = 15;
         int expectedPosition = seq.length;
-        assertThat(search(key, seq).getPosition(), is(expectedPosition));
+        assertThat( search( key, seq ).getPosition(), is( expectedPosition ) );
     }
 
     @Test
@@ -51,7 +51,7 @@ public class BinarySearchTest {
         int[] seq = {1, 2, 4, 5, 10, 11, 13, 14, 15, 20};
         int key = 10;
         int expectedPosition = 5;
-        assertThat(search(key, seq).getPosition(), is(expectedPosition));
+        assertThat( search( key, seq ).getPosition(), is( expectedPosition ) );
     }
 
     @Test
@@ -59,7 +59,7 @@ public class BinarySearchTest {
         int[] seq = {1, 2, 4, 5, 10, 11, 13, 14, 15, 20};
         int key = 11;
         int expectedPosition = 6;
-        assertThat(search(key, seq).getPosition(), is(expectedPosition));
+        assertThat( search( key, seq ).getPosition(), is( expectedPosition ) );
     }
 
     @Test
@@ -67,7 +67,7 @@ public class BinarySearchTest {
         int[] seq = {1, 2, 4, 5, 6, 10, 11, 13, 14, 15, 20};
         int key = 10;
         int expectedPosition = 6;
-        assertThat(search(key, seq).getPosition(), is(expectedPosition));
+        assertThat( search( key, seq ).getPosition(), is( expectedPosition ) );
     }
 
     @Test
@@ -75,14 +75,15 @@ public class BinarySearchTest {
         int[] seq = {1, 2, 4, 5, 6, 10, 13, 15, 16, 19};
         int key = 20;
         int expectedPosition = -1;
-        assertThat(search(key, seq).getPosition(), is(expectedPosition));
+        assertThat( search( key, seq ).getPosition(), is( expectedPosition ) );
     }
 
-    @Test
-    public void keyIsNotInEmptySequence() {
+    @Test(expected = IllegalArgumentException.class)
+    public void sequenceIsEmpty() {
         int[] seq = {};
         int key = 20;
-        int expectedPosition = -1;
-        assertThat(search(key, seq).getPosition(), is(expectedPosition));
+//        int expectedPosition = -1;
+        search( key, seq );
+//        assertThat(search(key, seq).getPosition(), is(expectedPosition));
     }
 }
