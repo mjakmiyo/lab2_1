@@ -65,15 +65,11 @@ public class BinarySearchTest {
         assertThat(searchResult.getPosition(), is(-1));
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void zeroElementsSeqThrowsException(){
         int searched = 1;
         int[] sequence = {};
-        try {
-            BinarySearch.search(searched, sequence);
-            fail();
-        } catch (IllegalArgumentException ex){
-        }
+        BinarySearch.search(searched, sequence);
     }
 
     @Test
