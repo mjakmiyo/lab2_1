@@ -66,6 +66,26 @@ public class BinarySearchTest {
         assertThat(searchResult.getPosition(), is(-1));
     }
 
+    @Test
+    public void itemShouldBeFoundLeftFromMidInManyElementsSeq() {
+        int key = 3;
+        int[] seq = {1,2,3,4,5,6};
+
+        SearchResult searchResult = BinarySearch.search(key, seq);
+        assertThat(searchResult.isFound(), is(true));
+        assertThat(seq[searchResult.getPosition()], is(key));
+    }
+
+    @Test
+    public void itemShouldBeFoundRightFromMidInManyElementsSeq() {
+        int key = 4;
+        int[] seq = {1,2,3,4,5,6};
+
+        SearchResult searchResult = BinarySearch.search(key, seq);
+        assertThat(searchResult.isFound(), is(true));
+        assertThat(seq[searchResult.getPosition()], is(key));
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void exceptionShouldBeThrownForEmptySeq() {
         int key = 1;
