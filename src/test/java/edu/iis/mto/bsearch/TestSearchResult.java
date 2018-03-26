@@ -49,4 +49,12 @@ public class TestSearchResult {
 		searchResult=BinarySearch.search(key, seq);
 		Assert.assertEquals(index,searchResult.getPosition());
 	}
+	
+	@Test
+	public void notFoundInSequenceWithNumberOfElementsGreaterThanOne() {
+		int key=68;
+		int seq[]= {5,6,7};
+		searchResult=BinarySearch.search(key, seq);
+		Assert.assertFalse(searchResult.isFound());
+	}
 }
