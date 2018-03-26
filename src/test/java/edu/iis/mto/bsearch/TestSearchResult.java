@@ -9,6 +9,13 @@ public class TestSearchResult {
 	
 	SearchResult searchResult;
 	
+	@Test(expected=IllegalArgumentException.class)
+	public void isSequenceEmpty() {
+		int seq[]= {};
+		int key=777;
+		searchResult=BinarySearch.search(key, seq);
+	}
+	
 	@Test
 	public void foundInSequence() {
 		int key=7;
