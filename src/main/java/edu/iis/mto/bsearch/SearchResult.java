@@ -26,15 +26,12 @@ public class SearchResult {
 	public boolean equals(Object obj) {
 		if (obj instanceof SearchResult) {
 			return this.position == ((SearchResult) obj).position;
-
 		}
 		return false;
 	}
 
 	@Override
 	public String toString() {
-
-		return isFound() ? "( elem at position " + position + ")"
-				: "elem not found";
+		return isFound() ? "( elem at position " + position + ")" : "elem not found";
 	}
 }
