@@ -82,11 +82,41 @@ public class Tests {
 	}
 	
 	@Test
-	public void ShouldBeInTheMiddleEvenArray() {
+	public void ShouldLeftNeighbourOfTheMiddleOddArray() {
+		int key = 16;
+		SearchResult result = new SearchResult();
+		int[] multiElementsSequence = new int[] {15,16,17,18,19};
+		final int EXPECTED = multiElementsSequence.length/2;
+		result = BinarySearch.search(key, multiElementsSequence);
+		assertThat(EXPECTED, is(result.getPosition()));
+	}
+	
+	@Test
+	public void ShouldRightNeighbourOfTheMiddleOddArray() {
+		int key = 18;
+		SearchResult result = new SearchResult();
+		int[] multiElementsSequence = new int[] {15,16,17,18,19};
+		final int EXPECTED = (multiElementsSequence.length/2)+2;
+		result = BinarySearch.search(key, multiElementsSequence);
+		assertThat(EXPECTED, is(result.getPosition()));
+	}
+	
+	@Test
+	public void ShouldBeInTheEightMiddleOfEvenArray() {
 		int key = 118;
 		SearchResult result = new SearchResult();
 		int[] multiElementsSequence = new int[] {115,116,117,118,119,120};
 		final int EXPECTED = (multiElementsSequence.length/2)+1;
+		result = BinarySearch.search(key, multiElementsSequence);
+		assertThat(EXPECTED, is(result.getPosition()));
+	}
+	
+	@Test
+	public void ShouldBeInTheLeftMiddleOfEvenArray() {
+		int key = 3;
+		SearchResult result = new SearchResult();
+		int[] multiElementsSequence = new int[] {1,2,3,4,5,6};
+		final int EXPECTED = multiElementsSequence.length/2;
 		result = BinarySearch.search(key, multiElementsSequence);
 		assertThat(EXPECTED, is(result.getPosition()));
 	}
