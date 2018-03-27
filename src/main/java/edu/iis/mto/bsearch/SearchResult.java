@@ -7,6 +7,7 @@ public class SearchResult {
 
 	private static final int NOT_FOUND = -1;
 	private int position = NOT_FOUND;
+	private int numberOfIteration = 0;
 
 	public boolean isFound() {
 		return position > NOT_FOUND;
@@ -22,6 +23,10 @@ public class SearchResult {
 		return position;
 	}
 
+	public int getNumberOfIteration() {
+		return numberOfIteration;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof SearchResult) {
@@ -29,6 +34,10 @@ public class SearchResult {
 
 		}
 		return false;
+	}
+
+	public void setNumberOfIteration(int numberOfIteration) {
+		this.numberOfIteration = numberOfIteration;
 	}
 
 	@Override
