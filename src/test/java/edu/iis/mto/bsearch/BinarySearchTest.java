@@ -57,6 +57,24 @@ public class BinarySearchTest {
     }
 
     @Test
+    public void elementIsOneAfterMiddleInFewElementsSeq(){
+        int searched = 20;
+        int[] sequence = {10, 20, 30, 40, 50};
+        SearchResult searchResult = BinarySearch.search(searched, sequence);
+        assertThat(searchResult.isFound(), is(true));
+        assertThat(sequence[searchResult.getPosition()], is(searched));
+    }
+
+    @Test
+    public void elementIsOneBeforeMiddleInFewElementsSeq(){
+        int searched = 40;
+        int[] sequence = {10, 20, 30, 40, 50};
+        SearchResult searchResult = BinarySearch.search(searched, sequence);
+        assertThat(searchResult.isFound(), is(true));
+        assertThat(sequence[searchResult.getPosition()], is(searched));
+    }
+
+    @Test
     public void elementIsNotInFewElementsSeq(){
         int searched = 1;
         int[] sequence = {10, 20, 30};
