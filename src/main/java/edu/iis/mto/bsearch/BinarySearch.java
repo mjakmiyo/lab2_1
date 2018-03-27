@@ -20,7 +20,10 @@ public class BinarySearch {
 	 *         position (jezeli znaleziony - pozycja w sekwencji, jezeli nie
 	 *         znaleziony -1)
 	 */
-	public static SearchResult search(int key, int[] seq) {
+	public static SearchResult search(int key, int[] seq) throws IllegalArgumentException {
+	    if (seq.length < 1) {
+	        throw new IllegalArgumentException();
+	    }
 		int start = 0;
 		int end = seq.length - 1;
 		int center;
