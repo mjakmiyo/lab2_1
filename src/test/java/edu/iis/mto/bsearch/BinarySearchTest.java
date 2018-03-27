@@ -30,7 +30,7 @@ public class BinarySearchTest {
     }
 
     @Test
-    public void elementIsFirstInFewElementsSeq(){
+    public void elementIsFirst(){
         int searched = 10;
         int[] sequence = {10, 20, 30};
         SearchResult searchResult = BinarySearch.search(searched, sequence);
@@ -39,7 +39,7 @@ public class BinarySearchTest {
     }
 
     @Test
-    public void elementIsLastInFewElementsSeq(){
+    public void elementIsLast(){
         int searched = 30;
         int[] sequence = {10, 20, 30};
         SearchResult searchResult = BinarySearch.search(searched, sequence);
@@ -48,7 +48,7 @@ public class BinarySearchTest {
     }
 
     @Test
-    public void elementIsInMiddleInFewElementsSeq(){
+    public void elementIsInMiddle(){
         int searched = 20;
         int[] sequence = {10, 20, 30};
         SearchResult searchResult = BinarySearch.search(searched, sequence);
@@ -57,7 +57,7 @@ public class BinarySearchTest {
     }
 
     @Test
-    public void elementIsOneAfterMiddleInFewElementsSeq(){
+    public void elementIsOneAfterMiddle(){
         int searched = 20;
         int[] sequence = {10, 20, 30, 40, 50};
         SearchResult searchResult = BinarySearch.search(searched, sequence);
@@ -66,7 +66,7 @@ public class BinarySearchTest {
     }
 
     @Test
-    public void elementIsOneBeforeMiddleInFewElementsSeq(){
+    public void elementIsOneBeforeMiddle(){
         int searched = 40;
         int[] sequence = {10, 20, 30, 40, 50};
         SearchResult searchResult = BinarySearch.search(searched, sequence);
