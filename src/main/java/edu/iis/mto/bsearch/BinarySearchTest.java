@@ -36,11 +36,21 @@ public class BinarySearchTest {
 	}
 	
 	@Test
-	public void IsAMiddleElement()
+	public void IsAMiddleElementBoundaryPlusOne()
 	{
-		int element = testarray.length/2 +1;
-		assertThat(BinarySearch.search(testarray[testarray.length/2 +1], testarray).getPosition() -1, Matchers.is(element));
+		int middleelement = 5;
+		int position = testarray.length/2 +1;
+		assertThat(BinarySearch.search(middleelement, testarray).getPosition(), Matchers.is(position));
 	}
+	
+	@Test
+	public void IsAMiddleElementBoundaryMinusOne()
+	{
+		int middleelement = 2;
+		int position = -1;
+		assertThat(BinarySearch.search(middleelement, testarray).getPosition(), Matchers.is(position));
+	}
+	
 	
 	@Test (expected=ArrayIndexOutOfBoundsException.class)
 	public void ElementNotFoundinSquenceButLargerThanOne()
