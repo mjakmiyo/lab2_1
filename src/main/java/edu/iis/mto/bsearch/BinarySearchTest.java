@@ -50,6 +50,24 @@ public class BinarySearchTest {
 	}
 
 	@Test
+	public void itemShouldBeFoundLeftFromMidInManyElementsSequence() {
+		final int key = 3;
+		final int[] seq = { 1, 2, 3, 4, 5, 6 };
+		final SearchResult searchResult = BinarySearch.search(key, seq);
+		assertThat(searchResult.isFound(), is(true));
+		assertThat(seq[searchResult.getPosition()], is(key));
+	}
+
+	@Test
+	public void itemShouldBeFoundRightFromMidInManyElementsSequence() {
+		final int key = 4;
+		final int[] seq = { 1, 2, 3, 4, 5, 6 };
+		final SearchResult searchResult = BinarySearch.search(key, seq);
+		assertThat(searchResult.isFound(), is(true));
+		assertThat(seq[searchResult.getPosition()], is(key));
+	}
+
+	@Test
 	public void itemShouldNotBeFoundInManyElementsSequence() {
 		final int key = 6;
 		final int[] seq = { 1, 2, 3, 4, 5 };
