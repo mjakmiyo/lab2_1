@@ -7,6 +7,15 @@ import org.junit.Test;
 
 public class BinarySearchTest {
 	@Test
+	public void itemShouldBeFoundAtBeginningOfManyElementsSequence() {
+		final int key = 1;
+		final int[] seq = { 1, 2, 3, 4, 5 };
+		final SearchResult searchResult = BinarySearch.search(key, seq);
+		assertThat(searchResult.isFound(), is(true));
+		assertThat(seq[searchResult.getPosition()], is(key));
+	}
+
+	@Test
 	public void itemShouldBeFoundInOneElementSequence() {
 		final int key = 1;
 		final int[] seq = { key };
@@ -23,4 +32,5 @@ public class BinarySearchTest {
 		assertThat(searchResult.isFound(), is(false));
 		assertThat(searchResult.getPosition(), is(-1));
 	}
+
 }
