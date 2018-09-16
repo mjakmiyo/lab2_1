@@ -1,17 +1,17 @@
 /**
- * 
+ *
  */
 package edu.iis.mto.bsearch;
 
 /**
  * Utility Class dla wyszukiwania binarnego
- * 
+ *
  */
 public class BinarySearch {
 
 	/**
 	 * Metoda realizujaca wyszukiwanie binarne
-	 * 
+	 *
 	 * @param key
 	 *            - szukany obiekt
 	 * @param seq
@@ -24,18 +24,19 @@ public class BinarySearch {
 		int start = 0;
 		int end = seq.length - 1;
 		int center;
-		SearchResult result = new SearchResult();
+		final SearchResult result = new SearchResult();
 
 		while (start <= end) {
 			center = (start + end) / 2;
 			if (seq[center] == key) {
-				result.setPosition(center + 1);
+				result.setPosition(center);
 				break;
 			} else {
-				if (seq[center] < key)
+				if (seq[center] < key) {
 					start = center + 1;
-				else
+				} else {
 					end = center - 1;
+				}
 			}
 
 		}
