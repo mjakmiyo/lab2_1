@@ -16,12 +16,39 @@ public class BinarySearchTest {
 	}
 
 	@Test
+	public void itemShouldBeFoundInEndOfManyElementsSequence() {
+		final int key = 5;
+		final int[] seq = { 1, 2, 3, 4, 5 };
+		final SearchResult searchResult = BinarySearch.search(key, seq);
+		assertThat(searchResult.isFound(), is(true));
+		assertThat(seq[searchResult.getPosition()], is(key));
+	}
+
+	@Test
+	public void itemShouldBeFoundInMiddleOfManyElementsSequence() {
+		final int key = 3;
+		final int[] seq = { 1, 2, 3, 4, 5 };
+		final SearchResult searchResult = BinarySearch.search(key, seq);
+		assertThat(searchResult.isFound(), is(true));
+		assertThat(seq[searchResult.getPosition()], is(key));
+	}
+
+	@Test
 	public void itemShouldBeFoundInOneElementSequence() {
 		final int key = 1;
 		final int[] seq = { key };
 		final SearchResult searchResult = BinarySearch.search(key, seq);
 		assertThat(searchResult.isFound(), is(true));
 		assertThat(seq[searchResult.getPosition()], is(key));
+	}
+
+	@Test
+	public void itemShouldNotBeFoundInManyElementsSequence() {
+		final int key = 6;
+		final int[] seq = { 1, 2, 3, 4, 5 };
+		final SearchResult searchResult = BinarySearch.search(key, seq);
+		assertThat(searchResult.isFound(), is(false));
+		assertThat(searchResult.getPosition(), is(-1));
 	}
 
 	@Test
