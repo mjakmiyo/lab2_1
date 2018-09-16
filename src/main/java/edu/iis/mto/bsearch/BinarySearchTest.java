@@ -6,6 +6,13 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 public class BinarySearchTest {
+	@Test(expected = IllegalArgumentException.class)
+	public void exceptionShouldBeThrownForEmptySequence() {
+		final int key = 1;
+		final int[] seq = {};
+		BinarySearch.search(key, seq);
+	}
+
 	@Test
 	public void itemShouldBeFoundAtBeginningOfManyElementsSequence() {
 		final int key = 1;

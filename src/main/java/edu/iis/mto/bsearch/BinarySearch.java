@@ -5,7 +5,6 @@ package edu.iis.mto.bsearch;
 
 /**
  * Utility Class dla wyszukiwania binarnego
- *
  */
 public class BinarySearch {
 
@@ -25,6 +24,10 @@ public class BinarySearch {
 		int end = seq.length - 1;
 		int center;
 		final SearchResult result = new SearchResult();
+
+		if (end == -1) {
+			throw new IllegalArgumentException();
+		}
 
 		while (start <= end) {
 			center = (start + end) / 2;
